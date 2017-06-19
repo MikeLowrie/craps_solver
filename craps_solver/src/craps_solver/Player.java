@@ -66,7 +66,14 @@ public class Player {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * When a line bet turns into a point, this method pulls the line bet and turns
+	 * it into an appropriate Come or Don't Come bet.
+	 * @param b Bet to be changed
+	 * @param firstdie Value of first die
+	 * @param seconddie Value of second die
+	 */
 	private void assignLinePoint(Bet b, int firstdie, int seconddie) {
 		int roll = firstdie + seconddie;
 		boolean comebet = b.getName().equals("PassLine");
