@@ -19,7 +19,7 @@ public class Player {
 	 * @param b Bet to be added
 	 * @return True if the player had money to place the bet, false otherwise.
 	 */
-	private boolean addBet(Bet b) {
+	public boolean addBet(Bet b) {
 		int investment = b.getInvestment();
 		
 		if(this.bankroll >= investment) {
@@ -37,7 +37,7 @@ public class Player {
 	 * @param b Bet to be pulled
 	 * @return True if the bet was successfully pulled, false otherwise.
 	 */
-	private boolean pullBet(Bet b) {
+	public boolean pullBet(Bet b) {
 		boolean removed = currentbets.remove(b);
 		if(removed)
 			bankroll += b.getInvestment();
@@ -137,7 +137,7 @@ public class Player {
 	 * @param name
 	 * @return
 	 */
-	private Bet findBet(String name) {
+	public Bet findBet(String name) {
 		Bet b = new Bet();
 		for(Bet bet : allbets) {
 			if(bet.getName().equals(name)) {
@@ -146,5 +146,13 @@ public class Player {
 			}
 		}
 		return b;
+	}
+
+	/**
+	 * Gets the catalog of bets available in craps.
+	 * @return List containing every bet available in craps
+	 */
+	public ArrayList<Bet> getFullBetList() {
+		return allbets;
 	}
 }
