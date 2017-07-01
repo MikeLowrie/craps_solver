@@ -14,6 +14,7 @@ public class Bet {
 	private int investment;
 	private int[][] payout;
 	private String name;
+	private boolean canplace;
 
 	/**
 	 * Default constructor. Used to eliminate compilation errors.
@@ -22,6 +23,7 @@ public class Bet {
 		this.investment = 0;
 		this.name = "NULL";
 		this.payout = new int[6][6];
+		this.canplace = false;
 	}
 
 	/**
@@ -30,10 +32,11 @@ public class Bet {
 	 * @param payout Conditions for wins and losses.
 	 * @param name Name of bet.
 	 */
-	public Bet(int investment, int[][] payout, String name) {
+	public Bet(int investment, int[][] payout, String name, boolean canplace) {
 		this.investment = investment;
 		this.payout = payout;
 		this.name = name;
+		this.canplace = canplace;
 	}
 	
 	
@@ -48,10 +51,12 @@ public class Bet {
 		int betinvestment;
 		String betname;
 		int[][] betpayout;
+		boolean betcanplace;
 		
 		// Pass Line (Come Bar is handled the same)
 		betname = "PassLine";
 		betinvestment = tableminimum;
+		betcanplace = true;
 		betpayout = new int[][] {
 			{-1, -1,  0,  0,  0,  1},
 			{-1,  0,  0,  0,  1,  0},
@@ -60,11 +65,12 @@ public class Bet {
 			{ 0,  1,  0,  0,  0,  1},
 			{ 1,  0,  0,  0,  1, -1},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Pass Line (Don't Come Bar is handled the same)
 		betname = "DontPassLine";
 		betinvestment = tableminimum;
+		betcanplace = true;
 		betpayout = new int[][] {
 			{ 1,  1,  0,  0,  0, -1},
 			{ 1,  0,  0,  0, -1,  0},
@@ -73,11 +79,12 @@ public class Bet {
 			{ 0, -1,  0,  0,  0, -1},
 			{-1,  0,  0,  0, -1,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 4
 		betname = "Come4";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  1,  0,  0, -1},
 			{ 0,  1,  0,  0, -1,  0},
@@ -86,11 +93,12 @@ public class Bet {
 			{ 0, -1,  0,  0,  0,  0},
 			{-1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 5
 		betname = "Come5";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  1,  0, -1},
 			{ 0,  0,  1,  0, -1,  0},
@@ -99,11 +107,12 @@ public class Bet {
 			{ 0, -1,  0,  0,  0,  0},
 			{-1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 6
 		betname = "Come6";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  1, -1},
 			{ 0,  0,  0,  1, -1,  0},
@@ -112,11 +121,12 @@ public class Bet {
 			{ 1, -1,  0,  0,  0,  0},
 			{-1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 8
 		betname = "Come8";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0, -1},
 			{ 0,  0,  0,  0, -1,  1},
@@ -125,11 +135,12 @@ public class Bet {
 			{ 0, -1,  1,  0,  0,  0},
 			{-1,  1,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 9
 		betname = "Come9";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0, -1},
 			{ 0,  0,  0,  0, -1,  0},
@@ -138,11 +149,12 @@ public class Bet {
 			{ 0, -1,  0,  1,  0,  0},
 			{-1,  0,  1,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Come 10
 		betname = "Come10";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0, -1},
 			{ 0,  0,  0,  0, -1,  0},
@@ -151,11 +163,12 @@ public class Bet {
 			{ 0, -1,  0,  0,  1,  0},
 			{-1,  0,  0,  1,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 4
 		betname = "DontCome4";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0, -1,  0,  0,  1},
 			{ 0, -1,  0,  0,  1,  0},
@@ -164,11 +177,12 @@ public class Bet {
 			{ 0,  1,  0,  0,  0,  0},
 			{ 1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 5
 		betname = "DontCome5";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0, -1,  0,  1},
 			{ 0,  0, -1,  0,  1,  0},
@@ -177,11 +191,12 @@ public class Bet {
 			{ 0,  1,  0,  0,  0,  0},
 			{ 1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 6
 		betname = "DontCome6";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0, -1,  1},
 			{ 0,  0,  0, -1,  1,  0},
@@ -190,11 +205,12 @@ public class Bet {
 			{-1,  1,  0,  0,  0,  0},
 			{ 1,  0,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 8
 		betname = "DontCome8";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0,  1},
 			{ 0,  0,  0,  0,  1, -1},
@@ -203,11 +219,12 @@ public class Bet {
 			{ 0,  1, -1,  0,  0,  0},
 			{ 1, -1,  0,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 9
 		betname = "DontCome9";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0,  1},
 			{ 0,  0,  0,  0,  1,  0},
@@ -216,11 +233,12 @@ public class Bet {
 			{ 0,  1,  0, -1,  0,  0},
 			{ 1,  0, -1,  0,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		// Don't Come 10
 		betname = "DontCome10";
 		betinvestment = tableminimum;
+		betcanplace = false;
 		betpayout = new int[][] {
 			{ 0,  0,  0,  0,  0,  1},
 			{ 0,  0,  0,  0,  1,  0},
@@ -229,17 +247,70 @@ public class Bet {
 			{ 0,  1,  0,  0, -1,  0},
 			{ 1,  0,  0, -1,  0,  0},
 		};
-		bets.add(new Bet(betinvestment, betpayout, betname));
+		bets.add(new Bet(betinvestment, betpayout, betname, betcanplace));
 		
 		
 		return bets;
 	}
 	
-	public static ArrayList<Bet> findBestBet(ArrayList<Bet> currentbets, int bankroll) {
-		ArrayList<Bet> bestbets = new ArrayList<Bet>();
+	public static ArrayList<Bet> findBestBet(ArrayList<Bet> currentbets, ArrayList<Bet> bestbets, ArrayList<Bet> placeablebets, int bankroll, int index) {
+		for(int i = index; i < placeablebets.size(); i++) {
+			Bet b = placeablebets.get(i);
+			if(b.getInvestment() <= bankroll) {
+				ArrayList<Bet> potentialbets = currentbets;
+				potentialbets.add(b);
+				if(Bet.evaluateBets(currentbets) < Bet.evaluateBets(potentialbets)) {
+					bestbets = potentialbets;
+				} else {
+					bestbets = currentbets;
+				}
+				potentialbets.remove(potentialbets.size() - 1);
+			}
+		}
+		
+		/* testBetCombination(betcombo, new ArrayList<Bet>(), 0); 
+		 * 
+		 * public void testBetCombination(ArrayList<Bet> inbet, ArrayList<Bet> outbet, int index) {
+		    for (int i = index; i < inbet.size(); i++)
+		    {
+		        outbet.add(inbet.get(i));
+		        String betcombination = "";
+		        for(Bet b : outbet) {
+		        	betcombination = betcombination + ", " + b.getName();
+		        }
+		        double differential = Bet.evaluateBets(outbet);
+		        System.out.println(differential + "..." + betcombination.substring(2));
+		        testBetCombination(inbet, outbet, i + 1);
+		        outbet.remove(outbet.size() - 1);
+		    }
+		}
+		 */
+		
 		
 		return bestbets;
 	}
+
+	/**
+	 * Calculates the win-loss differential of the combination of bets provided.
+	 * If the number is higher than zero, the player is expected to win.
+	 * If the number is lower than zero, the player is expected to lose.
+	 * @param currentbets
+	 * @return
+	 */
+	public static double evaluateBets(ArrayList<Bet> currentbets) {
+		double differential = 0.0;
+		for(Bet b : currentbets) {
+			int[][] payout = b.getPayout();
+			for(int i = 0; i < 6; i++) {
+				for(int j = 0; j < 6; j++) {
+					differential += payout[i][j];
+				}
+			}
+		}
+		differential /= 36;
+		return differential;
+	}
+	
 	
 	/**
 	 * Gets the investment on this bet.
@@ -263,5 +334,14 @@ public class Bet {
 	 */
 	public String getName() {
 		return this.name;
+	}
+
+	/**
+	 * Determines if the user can place this bet themselves, or is the result of another bet.
+	 * Point bets always return false.
+	 * @return Boolean representing if this bet can place
+	 */
+	public boolean getCanPlace() {
+		return canplace;
 	}
 }

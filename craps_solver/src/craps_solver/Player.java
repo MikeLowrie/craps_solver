@@ -6,12 +6,17 @@ public class Player {
 
 	private ArrayList<Bet> currentbets;
 	private ArrayList<Bet> allbets;
+	private ArrayList<Bet> placeablebets;
 	private int bankroll;
 	
 	public Player(int bankroll, double odds, int tableminimum) {
 		this.bankroll = bankroll;
 		this.currentbets = new ArrayList<Bet>();
 		this.allbets = Bet.createBets(odds, tableminimum);
+		this.placeablebets = new ArrayList<Bet>();
+		for(Bet b : allbets) 
+			if(b.getCanPlace())
+				placeablebets.add(b);
 	}
 	
 	/**
@@ -54,7 +59,7 @@ public class Player {
 	public boolean payBet(Bet b, int firstdie, int seconddie) {
 		int payment = 0;
 		if(b.getName().equals("PassLine") || b.getName().equals("DontPassLine")) {
-			this.assignLinePoint(b, firstdie, seconddie);
+			this.assignLinePoint(b, firstdie + seconddie);
 		} else {
 			payment = b.getPayout()[firstdie][seconddie];
 		}
@@ -67,8 +72,12 @@ public class Player {
 		}
 	}
 	
-	private void assignLinePoint(Bet b, int firstdie, int seconddie) {
-		int roll = firstdie + seconddie;
+	/**
+	 * Transfers a Pass or Don't Pass Line bet into the correct Come/DC Bet, making it a point.
+	 * @param b Bet to be transferred
+	 * @param roll Value of dice roll
+	 */
+	private void assignLinePoint(Bet b, int roll) {
 		boolean comebet = b.getName().equals("PassLine");
 		Bet newbet = new Bet();
 		switch (roll) {
