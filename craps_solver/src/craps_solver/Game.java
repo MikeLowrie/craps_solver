@@ -9,6 +9,7 @@ public class Game {
 	}
 
 	public Game() {
+		System.out.println("Hello world!");
 		int bankroll = 100;
 		int tablemin = 10;
 		double odds = 3.45;
