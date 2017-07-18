@@ -260,7 +260,6 @@ public class Bet {
 				// @TODO: Make ArrayList<Bet> a new internal class for safer cloning
 				ArrayList<Bet> potentialbets = (ArrayList<Bet>) currentbets.clone();
 				potentialbets.add(b);
-				
 				double currentcomparison = Bet.evaluateBets(currentbets);
 				double potentialcomparison = Bet.evaluateBets(potentialbets);
 				double bestcomparison = Bet.evaluateBets(bestbets); 
@@ -274,8 +273,7 @@ public class Bet {
 				}
 				potentialbets.remove(potentialbets.size() - 1);
 			}
-		}		
-		
+		}
 		return bestbets;
 	}
 
@@ -319,7 +317,11 @@ public class Bet {
 		}
 		return output;
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> branch 'develop' of https://github.com/MikeLowrie/craps_solver.git
 	/**
 	 * Gets the investment on this bet.
 	 * @return investment value
