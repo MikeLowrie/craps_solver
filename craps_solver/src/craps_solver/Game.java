@@ -9,6 +9,7 @@ public class Game {
 	}
 
 	public Game() {
+		System.out.println("Hello world!");
 		int bankroll = 100;
 		int tablemin = 10;
 		double odds = 3.45;
@@ -49,9 +50,7 @@ public class Game {
 		placeablebets.add(p.findBet("DontPassLine"));
 		bestbets = Bet.findBestBet(currentbets, bestbets, placeablebets, 100, 0);
 		double differential = Bet.evaluateBets(bestbets);
-		String betcombination = "";
-		for(Bet b : bestbets)
-			betcombination = betcombination + ", " + b.getName();
+		String betcombination = Bet.printBets(bestbets);
 		System.out.println("Best combination is " + betcombination + " with differential of " + differential);
 	}
 	
