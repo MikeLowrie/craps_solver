@@ -263,7 +263,7 @@ public class Bet {
 				
 				double currentcomparison = Bet.evaluateBets(currentbets);
 				double potentialcomparison = Bet.evaluateBets(potentialbets);
-				double bestcomparison = Bet.evaluateBets(bestbets);
+				double bestcomparison = Bet.evaluateBets(bestbets); 
 				
 				if(currentcomparison < potentialcomparison) {
 					if(bestcomparison < potentialcomparison)
