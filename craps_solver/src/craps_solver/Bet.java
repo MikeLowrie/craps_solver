@@ -317,11 +317,7 @@ public class Bet {
 		}
 		return output;
 	}
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> branch 'develop' of https://github.com/MikeLowrie/craps_solver.git
 	/**
 	 * Gets the investment on this bet.
 	 * @return investment value
