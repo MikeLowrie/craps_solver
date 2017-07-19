@@ -9,10 +9,10 @@ public class Player {
 	private ArrayList<Bet> placeablebets;
 	private int bankroll;
 	
-	public Player(int bankroll, double odds, int tableminimum) {
+	public Player(int bankroll, double odds, int tableminimum, int propminimum) {
 		this.bankroll = bankroll;
 		this.currentbets = new ArrayList<Bet>();
-		this.allbets = Bet.createBets(odds, tableminimum);
+		this.allbets = Bet.createBets(odds, tableminimum, propminimum);
 		this.placeablebets = new ArrayList<Bet>();
 		for(Bet b : allbets) 
 			if(b.getCanPlace())
